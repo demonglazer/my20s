@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My 20s Progress Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .progress-container {
+            width: 100%;
+            background-color: #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+        .progress-bar {
+            height: 30px;
+            background-color: #4CAF50;
+            width: 0%;
+            transition: width 1s;
+        }
+        .percentage {
+            margin-top: 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>My 20s Progress</h1>
+    <div class="progress-container">
+        <div class="progress-bar" id="progress-bar"></div>
+    </div>
+    <p class="percentage" id="percentage">0%</p>
+    
+    <script>
+        function calculateProgress() {
+            const start = new Date('2022-11-12');
+            const end = new Date('2032-11-12');
+            const now = new Date();
+            
+            const totalDuration = end - start;
+            const elapsed = now - start;
+            const percentage = (elapsed / totalDuration) * 100;
+            
+            document.getElementById('progress-bar').style.width = percentage.toFixed(2) + '%';
+            document.getElementById('percentage').innerText = percentage.toFixed(2) + '%';
+        }
+        
+        calculateProgress();
+        setInterval(calculateProgress, 60000); // Update every minute
+    </script>
+</body>
+</html>
